@@ -1,0 +1,18 @@
+❓Branching Strategy in GIT - Git Flow
+
+Git Flow is a branching strategy designed to streamline the development process and to ensure code quality. It is widely used in software development projects and a detailed explanation is below:
+
+🔶 main branch:
+This branch contains the code which is production-ready code means only stable and tested code is merged into this branch. Releases are tagged in this branch.
+🔶 develop branch:
+This is the branch in which all the developers push their code and it acts as a staging area for all new code before it is merged into the main.
+🔶 feature/* branch:
+This is used for developing new features by developers and it is created from the develop and merged to develop branch once done.
+🔶 release/*:
+This is the branch in which the code sits before the new release and it is created from the develop and merged to main. Allows for minor bug fixes and preparing meta-data for a release.
+🔶hotfix/*:
+This is used for critical fixes in production. It is created from the main and merged back into both the main and develop branches after the fix.
+
+
+
+
