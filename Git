@@ -1,0 +1,150 @@
+Git: Git is a distributed version control system used to track changes in source code during software development. It allows multiple developers to collaborate on a project by providing tools to manage code versions, branch off into different development paths, and merge changes back into the main project.
+Example: Developers can create a branch to add a new feature, make changes in isolation, and later merge their branch back into the main codebase after review.
+
+
+Version Control Basics: Version control is a system that tracks changes to files, allowing you to revert to previous versions and collaborate with others. Git, a distributed version control system, stores the entire history of changes locally and synchronizes with remote repositories.
+
+Repository: Definition: A repository (or "repo") is a directory where Git tracks your project's files and their history. It can be local (on your computer) or remote (on a server, like GitHub).
+Clone a remote repository: git clone https://github.com/user/repo.git
+Check remote repositories: git remote -v
+
+Staging Area: The staging area is where you place changes you want to commit. It allows you to selectively include changes in your next commit.
+Example Commands:
+Stage a specific file: git add file.txt
+Stage all changes: git add .
+
+Commits: A commit is a snapshot of your project at a specific time. Commits record changes made to the files and include a message explaining what was done. 
+Example Commands: 
+Stage changes: git add .
+Commit changes with a message: git commit -m "Added feature X"
+
+Git Stash: Git stash temporarily saves changes that are not ready to be committed, allowing you to switch branches or pull updates without losing your work.
+Example Commands:
+Stash your changes: git stash
+Apply the most recent stash: git stash apply
+
+Branches: Branches are separate lines of development within a repository. They allow you to work on features or fixes independently from the main codebase. The main or master branch is usually the default.
+Example Commands:
+Create a new branch: git branch feature-x
+Switch to a branch: git checkout feature-x
+Create and switch to a branch: git checkout -b feature-x
+
+Merging: Merging is the process of integrating changes from one branch into another, typically to bring a feature branch back into the main branch.
+Example Commands:
+Merge a branch: git merge feature-x
+Abort a problematic merge: git merge --abort
+
+Rebasing: Rebasing is a method to reapply commits on top of another base commit. It’s often used to keep a clean, linear project history.
+Example Commands:
+Rebase your branch onto another branch: git rebase main
+Continue rebasing after resolving conflicts: git rebase --continue
+
+Remote Repositories: Remote repositories are versions of your project hosted online or on a network. They enable collaboration by allowing you to push your changes to a remote server and pull updates from others.
+Example Commands:
+Add a remote repository: git remote add origin https://github.com/user/repo.git
+Push changes to the remote repository: git push origin main
+Pull updates from the remote repository: git pull origin main
+
+Tags: Tags are markers used to highlight specific commits, often used for releases (e.g., v1.0). Tags are usually immutable and provide an easy way to reference important points in history.
+Example Commands:
+Create a tag: git tag v1.0
+Push tags to the remote repository: git push origin --tags
+
+Reverting and Resetting: Reverting and resetting are methods to undo changes in Git. git revert undoes a commit by creating a new one, while git reset changes the current branch's history by moving the HEAD pointer.
+Example Commands:
+Revert a commit: git revert <commit-hash>
+Reset to a previous commit: git reset --hard <commit-hash>
+
+Cherry-Picking: Cherry-picking allows you to apply a specific commit from one branch to another, useful for selectively bringing in changes without merging entire branches.
+Example Commands:
+Cherry-pick a commit: git cherry-pick <commit-hash>
+
+Collaboration in Git: Collaboration in Git involves multiple developers working together, often by pushing and pulling changes to shared repositories, handling pull requests, and resolving conflicts.
+Example Commands:
+Push your branch to the remote repository: git push origin feature-x
+Pull changes from the remote repository: git pull origin main
+Resolve merge conflicts manually: git merge <branch>, then manually resolve conflicts in files, followed by git add and git commit.
+
+Git Hooks: Git hooks are scripts that Git automatically runs before or after certain events (like a commit or push). They can be used to enforce code standards, run tests, or automate tasks.
+
+
+Interactive Rebase: Interactive rebase (git rebase -i) allows you to rewrite your commit history by modifying, reordering, squashing, or even splitting commits. This is useful for cleaning up a series of commits before sharing them with others.
+Example Commands:
+Start an interactive rebase: git rebase -i HEAD~3
+This opens an editor where you can pick, squash, or reword the last 3 commits.
+
+Squash Commits: Squashing commits combines multiple commits into a single commit. This is often used to clean up a messy commit history before merging a feature branch into the main branch.
+Example Commands: Squash commits during interactive rebase.
+
+Reflog: The reflog records updates to the tip of branches and other references. It’s useful for recovering lost commits or branches after a reset or an unintended change.
+Example Commands:
+View the reflog: git reflog
+Recover a lost commit: git checkout <commit-hash-from-reflog>
+
+Git Bisect: Git bisect helps you find the commit that introduced a bug by performing a binary search through your commit history. You mark a good commit and a bad commit, and Git checks out commits in between to isolate the issue.
+Example Commands:
+Start bisecting: git bisect start
+Mark a good commit: git bisect good <commit-hash>
+Mark a bad commit: git bisect bad <commit-hash>
+
+Submodules: Git submodules allow you to include and track external repositories within your own repository. This is useful for managing dependencies in a project.
+Example Commands:
+Add a submodule: git submodule add https://github.com/user/repo.git path/to/submodule
+Update submodules: git submodule update --remote
+
+Git Worktrees: Git worktrees allow you to check out multiple branches simultaneously by creating additional working directories linked to the same repository. This is useful for working on multiple branches without having to constantly switch between them.
+Example Commands:
+Create a new worktree: git worktree add ../path-to-worktree <branch>
+List existing worktrees: git worktree list
+
+Sparse Checkout: Sparse checkout allows you to check out only a subset of the files in a repository. This is useful for working with large repositories when you only need a few files.
+Example Commands: Enable sparse checkout: 
+git init
+git remote add -f origin https://github.com/user/repo.git
+git config core.sparseCheckout true
+Specify files to checkout: 
+echo "path/to/folder/" >> .git/info/sparse-checkout
+git checkout main
+
+Blame: The git blame command shows who last modified each line of a file, helping you track down when and by whom changes were made. This is particularly useful for debugging or understanding the history of a file.
+Example Commands:
+View the blame for a file: git blame file.txt
+
+Git Clean: git clean is used to remove untracked files from your working directory. It’s helpful for cleaning up files that aren’t under version control, especially after switching branches.
+Example Commands:
+Preview what will be removed: git clean -n
+Remove untracked files: git clean -f
+Remove untracked directories: git clean -fd
+
+Patch Mode: Patch mode allows you to interactively select portions of files to stage for commit. This is useful when you want to commit only part of the changes in a file.
+Example Commands:
+Interactively stage changes: git add -p
+This will present changes in chunks, allowing you to stage or skip each one.
+
+Git Archive: git archive creates an archive (e.g., a .zip or .tar file) of files from a particular commit or branch. This is useful for exporting a snapshot of the project without the Git history.
+Example Commands:
+Create a zip archive of the current branch: git archive --format=zip HEAD > archive.zip
+Create a tar archive of a specific commit: git archive --format=tar <commit-hash> > archive.tar
+
+Git Rebase with Autosquash: Autosquash is an option for git rebase that automatically squashes commits that start with fixup! or squash! into their corresponding earlier commits.
+Example Commands:
+Mark a commit for autosquashing: git commit --fixup <commit-hash>
+Rebase with autosquash: git rebase -i --autosquash HEAD~3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
